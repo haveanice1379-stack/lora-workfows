@@ -1,0 +1,1451 @@
+{
+  "id": "9c35cc89-2757-476f-b680-b9d7f62b07c5",
+  "revision": 0,
+  "last_node_id": 534,
+  "last_link_id": 1434,
+  "nodes": [
+    {
+      "id": 154,
+      "type": "KSampler (Efficient)",
+      "pos": [
+        329,
+        30.00000195037137
+      ],
+      "size": [
+        320,
+        590
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 1235
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 1405
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 1406
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 1349
+        },
+        {
+          "name": "optional_vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 1408
+        },
+        {
+          "name": "script",
+          "shape": 7,
+          "type": "SCRIPT",
+          "link": 903
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": null
+        },
+        {
+          "name": "CONDITIONING+",
+          "type": "CONDITIONING",
+          "slot_index": 1,
+          "links": []
+        },
+        {
+          "name": "CONDITIONING-",
+          "type": "CONDITIONING",
+          "slot_index": 2,
+          "links": null
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 3,
+          "links": null
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 4,
+          "links": []
+        },
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 5,
+          "links": [
+            1378
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler (Efficient)"
+      },
+      "widgets_values": [
+        803422426880298,
+        null,
+        12,
+        3.5,
+        "euler_ancestral",
+        "ddim_uniform",
+        0.95,
+        "none",
+        "true"
+      ],
+      "color": "#332222",
+      "bgcolor": "#553333",
+      "shape": 1
+    },
+    {
+      "id": 464,
+      "type": "VAEEncode",
+      "pos": [
+        595,
+        830
+      ],
+      "size": [
+        230,
+        50
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 14,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 1346
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 1409
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            1342
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEEncode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 257,
+      "type": "CR Latent Input Switch",
+      "pos": [
+        695,
+        780
+      ],
+      "size": [
+        480,
+        80
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 18,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "text to i",
+          "name": "latent1",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 1407
+        },
+        {
+          "label": "image to i",
+          "name": "latent2",
+          "shape": 7,
+          "type": "LATENT",
+          "link": 1342
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            1349
+          ]
+        },
+        {
+          "name": "show_help",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CR Latent Input Switch"
+      },
+      "widgets_values": [
+        2
+      ]
+    },
+    {
+      "id": 198,
+      "type": "PlaySound|pysssss",
+      "pos": [
+        330,
+        -5
+      ],
+      "size": [
+        305,
+        35
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "any",
+          "type": "*",
+          "link": 1378
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "shape": 6,
+          "type": "*",
+          "slot_index": 0,
+          "links": [
+            1265
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PlaySound|pysssss"
+      },
+      "widgets_values": [
+        "always",
+        0.5,
+        "notify.mp3"
+      ]
+    },
+    {
+      "id": 254,
+      "type": "LoadImage",
+      "pos": [
+        580,
+        870
+      ],
+      "size": [
+        325,
+        330
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 0,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            1346
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        ".0896.png",
+        "image"
+      ]
+    },
+    {
+      "id": 364,
+      "type": "InvertMask",
+      "pos": [
+        1160,
+        1265
+      ],
+      "size": [
+        225,
+        50
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 1269
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 0,
+          "links": [
+            1283
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "InvertMask"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 363,
+      "type": "AddMask",
+      "pos": [
+        925,
+        1265
+      ],
+      "size": [
+        215,
+        50
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask1",
+          "type": "MASK",
+          "link": 1268
+        },
+        {
+          "name": "mask2",
+          "type": "MASK",
+          "link": 1041
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 0,
+          "links": [
+            1269
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AddMask"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 362,
+      "type": "LoadImageMask",
+      "pos": [
+        1245,
+        870
+      ],
+      "size": [
+        320,
+        330
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 0,
+          "links": [
+            1041,
+            1434
+          ]
+        }
+      ],
+      "title": "Load Image (as Mask)2",
+      "properties": {
+        "Node name for S&R": "LoadImageMask",
+        "image": "clipspace/clipspace-painted-masked-1776072807137.png [input]"
+      },
+      "widgets_values": [
+        "clipspace/clipspace-painted-masked-1776072807137.png [input]",
+        "alpha",
+        "image"
+      ]
+    },
+    {
+      "id": "167:0",
+      "type": "XY Input: Seeds++ Batch",
+      "pos": [
+        660,
+        555
+      ],
+      "size": [
+        240,
+        65
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "X or Y",
+          "type": "XY",
+          "slot_index": 0,
+          "links": [
+            1422
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "XY Input: Seeds++ Batch"
+      },
+      "widgets_values": [
+        3
+      ],
+      "color": "#223333",
+      "bgcolor": "#335555",
+      "shape": 1
+    },
+    {
+      "id": 511,
+      "type": "easy loraStack",
+      "pos": [
+        655,
+        30
+      ],
+      "size": [
+        295,
+        346
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "optional_lora_stack",
+          "shape": 7,
+          "type": "LORA_STACK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "lora_stack",
+          "type": "LORA_STACK",
+          "links": [
+            1415
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "easy loraStack"
+      },
+      "widgets_values": [
+        true,
+        "simple",
+        5,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1,
+        "None",
+        1,
+        1,
+        1
+      ],
+      "color": "#223",
+      "bgcolor": "#335",
+      "shape": 1
+    },
+    {
+      "id": 109,
+      "type": "XY Plot",
+      "pos": [
+        955,
+        30
+      ],
+      "size": [
+        305,
+        195
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "dependencies",
+          "shape": 7,
+          "type": "DEPENDENCIES",
+          "link": 1417
+        },
+        {
+          "name": "X",
+          "shape": 7,
+          "type": "XY",
+          "link": 1422
+        },
+        {
+          "name": "Y",
+          "shape": 7,
+          "type": "XY",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SCRIPT",
+          "type": "SCRIPT",
+          "slot_index": 0,
+          "links": [
+            903
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "XY Plot"
+      },
+      "widgets_values": [
+        10,
+        "False",
+        "Vertical",
+        "True",
+        "Images"
+      ],
+      "color": "#223",
+      "bgcolor": "#335",
+      "shape": 1
+    },
+    {
+      "id": 356,
+      "type": "LoadImageMask",
+      "pos": [
+        920,
+        870
+      ],
+      "size": [
+        320,
+        330
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 0,
+          "links": [
+            1268,
+            1370
+          ]
+        }
+      ],
+      "title": "Load Image (as Mask)1",
+      "properties": {
+        "Node name for S&R": "LoadImageMask",
+        "image": "clipspace/clipspace-painted-masked-1776072799025.png [input]"
+      },
+      "widgets_values": [
+        "clipspace/clipspace-painted-masked-1776072799025.png [input]",
+        "alpha",
+        "image"
+      ]
+    },
+    {
+      "id": 521,
+      "type": "MarkdownNote",
+      "pos": [
+        925,
+        1360
+      ],
+      "size": [
+        425,
+        225
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Pixelwise&InvertMask",
+      "properties": {},
+      "widgets_values": [
+        "Pixelwise combines the masks including their alpha values, and InvertMask then inverts the area.\n\nThis processing is necessary because Attention Couple will throw an error if even a single pixel in the image remains unmasked.\n\nWhen adding more masks, duplicate the Pixelwise node, combine all masks together, and connect them to InvertMask.\n```mermaid\nMask1 ──┐\n                       \nMask2 ── [Pixelwise] ─► [Pixelwise] ─► [ InvertMask ]\n \nMask3 ────────────┘"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 529,
+      "type": "MarkdownNote",
+      "pos": [
+        580,
+        1245
+      ],
+      "size": [
+        340,
+        435
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Image to Image (i2i)",
+      "properties": {},
+      "widgets_values": [
+        "The images generated by Attention Couple can sometimes result in ambiguous interpretation or fused features when mask areas overlap. This group is used to correct such issues.\n\nIt is normally bypassed as a whole group, but disabling the bypass switches it to i2i (img2img) mode.\n\n- If you have the custom node **rgthree-comfy** installed, you can toggle the bypass of the entire group with a single button.\n\n# Tips\n- Loading the same image into \"Load Image (as Mask)\" makes it easier to see which areas are being masked.\n- Using Windows Paint or similar software to paint over fused areas with your ideal colors helps the AI understand your intention better.\n- The **Denoise** value in KSampler (Efficient) determines how closely the original image is followed.\n  Recommended ranges:\n  - **0.60～** : When you need to redraw clothing wrinkles, colors, etc.\n  - **0.40～0.59** : For light corrections such as fingers or shapes.\n  - **～0.30** : For minor fixes or during hires upscaling.\n- If you want to keep the composition mostly unchanged, the best method is to use image editing software that supports layers: overlay the image and erase the unwanted fused areas with an eraser tool.\n- For hires upscaling, first enlarge the image by n times using external software, then apply img2img with a low Denoise value.\n- Changes in contrast and color tones are almost unavoidable."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 301,
+      "type": "GoogleTranslateTextNode",
+      "pos": [
+        330,
+        650
+      ],
+      "size": [
+        225,
+        255
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "slot_index": 0,
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GoogleTranslateTextNode"
+      },
+      "widgets_values": [
+        "auto",
+        "en",
+        true,
+        "Manual Trasnlate",
+        "This Node can be safely removed if not needed."
+      ],
+      "shape": 1
+    },
+    {
+      "id": 119,
+      "type": "SaveImage",
+      "pos": [
+        330,
+        930
+      ],
+      "size": [
+        225,
+        410
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 1,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1265
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "%date:yyyy-MM-dd%/%date:yyMMddhhmmss%_%KSampler (Efficient).seed%"
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 532,
+      "type": "MarkdownNote",
+      "pos": [
+        1270,
+        30
+      ],
+      "size": [
+        360,
+        345
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "XY Plot & Lora",
+      "properties": {},
+      "widgets_values": [
+        "# XY Plot\nOutputs the generated images arranged side by side as a single image, with each image corresponding to one element.\n\nThis can be safely bypassed or removed if not needed, and it will still function properly.\n\n- XY Input: The number of images to generate is specified using the **Seeds++ Batch** node.\n- Other XY nodes contain many useful options for comparison, which is why this specification is used.\n\n# EasyLoraStack\nThis node allows you to load multiple LoRAs at once.\n\n- **toggle**  \n  Enables or disables the LoRA.\n\n- **mode**  \n  Switches to a mode where you can specify the CLIP strength.\n\n- **num_loras**  \n  Specifies the number of LoRAs to load.  \n  Parts where **Lora_name** is set to **None** will not affect the generated image."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 534,
+      "type": "MarkdownNote",
+      "pos": [
+        335,
+        -160
+      ],
+      "size": [
+        305,
+        110
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "PlaySound",
+      "properties": {},
+      "widgets_values": [
+        "# Play Sound\nPlays a sound notification when image generation is complete.\n\n- Can be safely removed if not needed."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 520,
+      "type": "MarkdownNote",
+      "pos": [
+        1160,
+        425
+      ],
+      "size": [
+        355,
+        375
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Attention Couple & Mask",
+      "properties": {},
+      "widgets_values": [
+        "# Attention Couple\nAdditional prompts will be applied to the masked area.\n\nIn this Workflow, **Mask1 and Mask2 are combined and inverted** to create the `base_mask`.  \nThe **main prompt** (base prompt) is applied to the **inverted area** (i.e., the region outside of Mask1 and Mask2).\n\nWhen adding extra characters later, it is recommended to also include the added Mask(s) in the combination for `base_mask`.\n\n**All Masks must be the same image size.**\n\nIf you only need 2 characters, you can safely disconnect any unused Masks.\n\nIf the mask is smaller or larger than the generated image size, it will be automatically adjusted.\n\n# Load image (as Mask)\nLoads an image to be used as a mask.\n\nThe actual content of the image is ignored, but you can use the following channels.\n\nTo edit the mask, right-click on Load image (as Mask) 1 or 2 and select **Open In MaskEditor**.\n\n- **Channel**  \n  Select which element to use for the mask.  \n  You can choose the alpha value or RGB colors from the image.  \n  **Recommended: alpha**\n\n# Add Character？\nIf you want to add more characters, right-click the Attention Couple node and select **Add Input**.\n\nThis will display additional `cond_3` and `mask_3`. Connect the new Mask and Condition nodes accordingly.\n\n**🟥 Important Note**  \nSpecifying base_mask can become unstable, so it is recommended to add a **Pixelwise** node."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 531,
+      "type": "MarkdownNote",
+      "pos": [
+        -410,
+        640
+      ],
+      "size": [
+        400,
+        635
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Prompts & Efficient Loader",
+      "properties": {},
+      "widgets_values": [
+        "The prompts from **Efficient Loader** are used as the base prompt and negative prompt.  \nPrompts 2 and 3 are used for Mask 1 and Mask 2 respectively.\n\n- In areas where mask regions overlap, the respective prompts are applied simultaneously.\n- **There is no function to apply LoRA only to specific masked areas.**\n\n# Tips\n- Each prompt is interpreted while considering the entire image.  \n  If the AI determines that the content does not fit on the screen, the number of characters may decrease or multiple characters may be drawn as a single character.  \n  To prevent this, it is effective to use prompts that clearly require two or more people in the composition, or to increase the image size.\n- Prompts like \"side-by-side\" have a strong effect but tend to lock the composition.  \n  Prompts such as \"3girls\" can be interpreted by the AI as \"there are 3 girls in this masked area,\" so the effect is not 100% reliable but can still be useful.  \n  **When specifying individual character names, it is often necessary to also include \"2girls\", \"3girls\", etc. in the prompt for reliable results.**\n- Prompts related to image quality and style are applied individually to each prompt, so they must be entered in all relevant sections.  \n  Conversely, this also allows you to generate images with different art styles for each masked area.\n\n# Additional Settings\n- `empty_latent_width` and `empty_latent_height` set the size of the generated image.\n- **batch_size is ignored.**\n- You can specify only one LoRA in the Efficient Loader, but you can also load multiple LoRAs using the EasyLoraStack node."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 325,
+      "type": "AttentionCouple|cgem156",
+      "pos": [
+        960,
+        475
+      ],
+      "size": [
+        175,
+        130
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 1404
+        },
+        {
+          "name": "base_mask",
+          "type": "MASK",
+          "link": 1283
+        },
+        {
+          "name": "cond_1",
+          "type": "CONDITIONING",
+          "link": 1430
+        },
+        {
+          "name": "mask_1",
+          "type": "MASK",
+          "link": 1370
+        },
+        {
+          "name": "cond_2",
+          "type": "CONDITIONING",
+          "link": 1431
+        },
+        {
+          "name": "mask_2",
+          "type": "MASK",
+          "link": 1434
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            1235
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AttentionCouple"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 425,
+      "type": "workflow>clips",
+      "pos": [
+        -410,
+        30
+      ],
+      "size": [
+        400,
+        570
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 1411
+        },
+        {
+          "label": "clip",
+          "name": "CLIPTextEncode clip",
+          "type": "CLIP",
+          "link": 1421
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Mask1 Conditioning",
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            1430
+          ]
+        },
+        {
+          "label": "Mask2 Conditioning",
+          "name": "CLIPTextEncode CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 1,
+          "links": [
+            1431
+          ]
+        }
+      ],
+      "title": "Prompts2,3",
+      "properties": {
+        "Node name for S&R": "workflow/clips"
+      },
+      "widgets_values": [
+        "3girls, reisen udongein inaba, \nwide-eyed, @ @, open mouth, from above, ",
+        "3girls, kizuna akari, \nsmile, from below, "
+      ]
+    },
+    {
+      "id": 508,
+      "type": "Efficient Loader",
+      "pos": [
+        -5,
+        30
+      ],
+      "size": [
+        330,
+        1115
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora_stack",
+          "shape": 7,
+          "type": "LORA_STACK",
+          "link": 1415
+        },
+        {
+          "name": "cnet_stack",
+          "shape": 7,
+          "type": "CONTROL_NET_STACK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            1404
+          ]
+        },
+        {
+          "name": "CONDITIONING+",
+          "type": "CONDITIONING",
+          "links": [
+            1405
+          ]
+        },
+        {
+          "name": "CONDITIONING-",
+          "type": "CONDITIONING",
+          "links": [
+            1406
+          ]
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            1407
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            1408,
+            1409
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            1411,
+            1421
+          ]
+        },
+        {
+          "name": "DEPENDENCIES",
+          "type": "DEPENDENCIES",
+          "links": [
+            1417
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Efficient Loader"
+      },
+      "widgets_values": [
+        "IL\\plantMilkModelSuite_walnut.safetensors",
+        "sdxl_vae.safetensors",
+        -2,
+        "None",
+        1,
+        1,
+        "(masterpiece, best quality, amazing quality, very aesthetic, (absurdres,:1.3) highres, newest, HDR, 8K, (high detail:1.2), (smooth shading:1.3), glossy surfaces, subtle, dark depth, ((colorful:0.7) depth:1.3):1.1),high contrast,\n3girls, kotonoha aoi, blue hair, \nangry, anger vein, ",
+        "",
+        "none",
+        "comfy",
+        1280,
+        960,
+        1
+      ],
+      "color": "#232",
+      "bgcolor": "#353",
+      "shape": 1
+    }
+  ],
+  "links": [
+    [
+      903,
+      109,
+      0,
+      154,
+      5,
+      "SCRIPT"
+    ],
+    [
+      1041,
+      362,
+      0,
+      363,
+      1,
+      "MASK"
+    ],
+    [
+      1235,
+      325,
+      0,
+      154,
+      0,
+      "MODEL"
+    ],
+    [
+      1265,
+      198,
+      0,
+      119,
+      0,
+      "IMAGE"
+    ],
+    [
+      1268,
+      356,
+      0,
+      363,
+      0,
+      "MASK"
+    ],
+    [
+      1269,
+      363,
+      0,
+      364,
+      0,
+      "MASK"
+    ],
+    [
+      1283,
+      364,
+      0,
+      325,
+      1,
+      "MASK"
+    ],
+    [
+      1342,
+      464,
+      0,
+      257,
+      1,
+      "LATENT"
+    ],
+    [
+      1346,
+      254,
+      0,
+      464,
+      0,
+      "IMAGE"
+    ],
+    [
+      1349,
+      257,
+      0,
+      154,
+      3,
+      "LATENT"
+    ],
+    [
+      1370,
+      356,
+      0,
+      325,
+      3,
+      "MASK"
+    ],
+    [
+      1378,
+      154,
+      5,
+      198,
+      0,
+      "IMAGE"
+    ],
+    [
+      1404,
+      508,
+      0,
+      325,
+      0,
+      "MODEL"
+    ],
+    [
+      1405,
+      508,
+      1,
+      154,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      1406,
+      508,
+      2,
+      154,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      1407,
+      508,
+      3,
+      257,
+      0,
+      "LATENT"
+    ],
+    [
+      1408,
+      508,
+      4,
+      154,
+      4,
+      "VAE"
+    ],
+    [
+      1409,
+      508,
+      4,
+      464,
+      1,
+      "VAE"
+    ],
+    [
+      1411,
+      508,
+      5,
+      425,
+      0,
+      "CLIP"
+    ],
+    [
+      1415,
+      511,
+      0,
+      508,
+      0,
+      "LORA_STACK"
+    ],
+    [
+      1417,
+      508,
+      6,
+      109,
+      0,
+      "DEPENDENCIES"
+    ],
+    [
+      1421,
+      508,
+      5,
+      425,
+      1,
+      "CLIP"
+    ],
+    [
+      1422,
+      "167:0",
+      0,
+      109,
+      1,
+      "XY"
+    ],
+    [
+      1430,
+      425,
+      0,
+      325,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      1431,
+      425,
+      1,
+      325,
+      4,
+      "CONDITIONING"
+    ],
+    [
+      1434,
+      362,
+      0,
+      325,
+      5,
+      "MASK"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 4,
+      "title": "Image to Image",
+      "bounding": [
+        570,
+        705,
+        345,
+        503.6
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "couple",
+      "bounding": [
+        950,
+        395,
+        195,
+        215
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "groupNodes": {
+      "clips": {
+        "nodes": [
+          {
+            "id": -1,
+            "type": "CLIPTextEncode",
+            "pos": {
+              "0": -410,
+              "1": -50
+            },
+            "size": {
+              "0": 380,
+              "1": 210
+            },
+            "flags": {},
+            "order": 23,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "clip",
+                "type": "CLIP",
+                "link": null,
+                "localized_name": "clip"
+              },
+              {
+                "name": "text",
+                "localized_name": "text",
+                "type": "STRING",
+                "widget": {
+                  "name": "text"
+                },
+                "boundingRect": {
+                  "0": 0,
+                  "1": 0,
+                  "2": 0,
+                  "3": 0
+                },
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "CONDITIONING",
+                "type": "CONDITIONING",
+                "links": [],
+                "localized_name": "CONDITIONING"
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "CLIPTextEncode"
+            },
+            "widgets_values": [
+              ""
+            ],
+            "index": 0
+          },
+          {
+            "id": -1,
+            "type": "CLIPTextEncode",
+            "pos": {
+              "0": -410,
+              "1": 230
+            },
+            "size": {
+              "0": 380,
+              "1": 210
+            },
+            "flags": {},
+            "order": 24,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "clip",
+                "type": "CLIP",
+                "link": null,
+                "localized_name": "clip"
+              },
+              {
+                "name": "text",
+                "localized_name": "text",
+                "type": "STRING",
+                "widget": {
+                  "name": "text"
+                },
+                "boundingRect": {
+                  "0": 0,
+                  "1": 0,
+                  "2": 0,
+                  "3": 0
+                },
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "CONDITIONING",
+                "type": "CONDITIONING",
+                "links": [],
+                "localized_name": "CONDITIONING"
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "CLIPTextEncode"
+            },
+            "widgets_values": [
+              ""
+            ],
+            "index": 1
+          }
+        ],
+        "links": [],
+        "external": [
+          [
+            0,
+            0,
+            "CONDITIONING"
+          ]
+        ]
+      }
+    },
+    "VHS_latentpreview": false,
+    "node_versions": {
+      "efficiency-nodes-comfyui": "9e3c5aa4976ad457065ef06a0dfdfc66e17c59ee",
+      "comfy-core": "0.18.1",
+      "ComfyUI_Comfyroll_CustomNodes": "d78b780ae43fcf8c6b7c6505e6ffb4584281ceca",
+      "comfyui-custom-scripts": "1.2.5",
+      "comfyui-easy-use": "8ba21d0b442002e66389d6e87faf828bfe05b2ad",
+      "comfyui_custom_nodes_alekpet": "d3ba728a162d1919ab93b763f05bd625df9f5950",
+      "cgem156-ComfyUI": "884563c0286bea1fb080fd3124687b344bb9c9f0"
+    },
+    "ds": {
+      "scale": 1,
+      "offset": [
+        390.233613993817,
+        -11.615840897733506
+      ]
+    },
+    "workflowRendererVersion": "LG",
+    "frontendVersion": "1.42.10",
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
